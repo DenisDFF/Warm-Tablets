@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hello, Bootstrap!</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<img th:src="@{${game.BigImageUrl}}" width="100%">
+
+<div>
+    <div class="d-flex align-items-center">
+        <p class="custom-text ml-5" style="width: 850px;" th:text="${game.description}"></p>
+        <div class="ml-auto">
+            <a th:href="@{${game.link}}" class="btn btn-primary font-title-bold mr-5" style="background-color: #FF4C00; width: 300px; height: 100px; line-height: 72px;">ГРАТИ</a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3 mb-4" th:each="game : ${games}">
+            <a th:href="@{/game/{id}(id=${game.id})}" class="">
+                <div class="category-block">
+                    <p class="category-text ml-3" style="line-height: 50px;" th:text="${game.name}"></p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid d-flex align-items-center justify-content-center mt-5">
+    <h1 class="text-center font-weight-bold">ДОВІДНИК</h1>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3 mb-4" th:each="category : ${game.categories}">
+            <a th:href="@{'/category/' + ${category}}" class="">
+                <div class="category-block">
+                    <p class="category-text ml-3" style="line-height: 50px;" th:text="${category}"></p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div th:replace="footer :: footer"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

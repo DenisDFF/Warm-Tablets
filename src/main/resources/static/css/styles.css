@@ -87,3 +87,38 @@ color: #000;
         margin: 0;
         font-weight: bold;
     }
+
+.list-group-item {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 10px; /* Закругленные углы */
+}
+
+.list-group-item:hover {
+    background-color: #FF4C00;
+    color: #FFF;
+}
+
+.list-group-item.active {
+    background-color: #FF4C00 !important;
+    color: #FFF;
+    border: 1px solid #FF4C00 !important;
+}
+
+.card {
+    border-radius: 15px; /* Округленные углы */
+    border: 1px solid #000;
+}
+
+.card-header {
+    background-color: #FF4C00;
+    color: #FFF;
+    border-radius: 15px 15px 0 0; /* Округляем верхние углы */
+}
+
+.card-body {
+    background-color: #FFF;
+    color: #000;
+}
