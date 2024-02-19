@@ -22,18 +22,20 @@ repositories {
 }
 
 dependencies {
-	implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.1'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation group: 'org.webjars', name: 'bootstrap', version: '5.3.2'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.flywaydb:flyway-core'
-	runtimeOnly 'com.h2database:h2'
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.1'
+//	runtimeOnly 'com.h2database:h2'
+
+//	implementation "org.springframework.boot:spring-boot-starter-security"
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//	implementation "org.springframework.boot:spring-boot-starter-security"
-	implementation 'org.hibernate:hibernate-core:5.5.7.Final'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {

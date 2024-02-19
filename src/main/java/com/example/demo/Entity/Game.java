@@ -1,8 +1,9 @@
 package com.example.demo.Entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
+
 import javax.swing.plaf.basic.BasicIconFactory;
 import java.util.List;
 
@@ -19,14 +20,8 @@ public class Game {
     private String name;
     private String description;
     private String link;
-    private List<String> categories;
+    private String[] categories;
 
     public Game() {
-//        this.id = id;
-//        this.name = name;
-//        this.description = description;
-//        this.imageUrl = imageUrl;
-//        this.categories = categories;
-//        this.BigImageUrl = BigImageUrl;
     }
 }
