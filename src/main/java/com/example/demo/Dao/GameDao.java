@@ -31,4 +31,6 @@ public class GameDao {
     public void deleteGame(Long id) {
         gameRepository.deleteById(id);
     }
+
+
 }
