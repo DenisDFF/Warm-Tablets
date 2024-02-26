@@ -22,3 +22,21 @@ CREATE TABLE IF NOT EXISTS game_items (
     description TEXT NOT NULL,
     FOREIGN KEY (game_id) REFERENCES games(id)
 );
+
+CREATE TABLE IF NOT EXISTS game_character (
+    id SERIAL PRIMARY KEY,
+    game_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    source TEXT NOT NULL,
+    FOREIGN KEY (game_id) REFERENCES games(id)
+);
+
+CREATE TABLE IF NOT EXISTS game_equipment (
+    id SERIAL PRIMARY KEY,
+    game_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    source TEXT NOT NULL,
+    FOREIGN KEY (game_id) REFERENCES games(id)
+);

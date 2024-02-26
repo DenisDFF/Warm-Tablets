@@ -1,12 +1,7 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Dao.GameDao;
-import com.example.demo.Dao.GameDetailsDao;
-import com.example.demo.Dao.GameItemDao;
-import com.example.demo.Entity.Game;
-import com.example.demo.Entity.GameItem;
-import com.example.demo.Entity.GameRules;
-import com.example.demo.Repository.GameDetailsRepository;
+import com.example.demo.Dao.*;
+import com.example.demo.Entity.*;
 import com.example.demo.Repository.GameRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +19,16 @@ public class MainController {
 
     private final GameItemDao gameItemDao;
 
-    public MainController(GameDao gameDao, GameDetailsDao gameDetailsDao, GameRepository gameRepository, GameItemDao gameItemDao) {
+    private final GameCharacterDao gameCharacterDao;
+    private final GameEquipmentDao gameEquipmentDao;
+
+    public MainController(GameDao gameDao, GameDetailsDao gameDetailsDao, GameRepository gameRepository, GameItemDao gameItemDao, GameCharacterDao gameCharacterDao, GameEquipmentDao gameEquipmentDao) {
         this.gameDao = gameDao;
         this.gameDetailsDao = gameDetailsDao;
         this.gameRepository = gameRepository;
         this.gameItemDao = gameItemDao;
+        this.gameCharacterDao = gameCharacterDao;
+        this.gameEquipmentDao = gameEquipmentDao;
           }
 
     @RequestMapping("/games-catalog")
@@ -72,6 +72,30 @@ public class MainController {
             model.addAttribute("gameDetails", gameItems);
         }
         return "categoryTemplates";
+    }
+
+    @RequestMapping("/game/{name}/Персонажи")
+    public String gameDetailsCharacter(@PathVariable("name") String name, Model model) {
+        String gameName = name.replace("/Персонажи", "");
+        Game game = gameRepository.findByName(gameName);
+        if (game != null) {
+            List<GameCharacter> gameCharacters = gameCharacterDao.findByGameId(game.getId());
+            model.addAttribute("game", game);
+            model.addAttribute("gameDetails", gameCharacters);
+        }
+        return "categoryTemplatesWithSource";
+    }
+
+    @RequestMapping("/game/{name}/Спорядження")
+    public String gameDetailsEquipment(@PathVariable("name") String name, Model model) {
+        String gameName = name.replace("/Спорядження", "");
+        Game game = gameRepository.findByName(gameName);
+        if (game != null) {
+            List<GameEquipment> gameEquipment = gameEquipmentDao.findByGameId(game.getId());
+            model.addAttribute("game", game);
+            model.addAttribute("gameDetails", gameEquipment);
+        }
+        return "categoryTemplatesWithSource";
     }
 
     @RequestMapping("/")

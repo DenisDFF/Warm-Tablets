@@ -44,6 +44,7 @@
                      role="tabpanel"
                      th:aria-labelledby="'item' + (${iterStat.index + 1}) + '-list'">
                     <h4 th:text="${detail.name}">Предмет</h4>
+                    <p th:text="${detail.source}" class="font-weight-bold">Джерело</p>
                     <p th:text="${detail.description}">Опис предмета</p>
                 </div>
             </div>

@@ -6,18 +6,3 @@ VALUES ('/static/images/Arkandia.png', '/static/images/BigArtArkandia.png',
         'Чарівні Лавки Аркандії',
         'Дорогі пригодники та майстри магії, ви чудово знаєте як іноді важко бути героями, віддавати своє життя заради світового порятунку та стикатися з безперервними загрозами. А що як ви вже втомилися від цього безперервного втручання в справи всесвіту та мрієте про щось більш затишне та спокійне? Тоді ви потрапили саме туди, куди потрібно!',
         'https://drive.google.com/file/d/1e3wEBHOs8lSXxFBZMxt_MtvrShJYsyel/view?usp=sharing');
-
-INSERT INTO game_rules (game_id, name, description)
-VALUES (1, 'rule34', 'sjgnosjngosldngs');
-
-INSERT INTO game_rules (game_id, name, description)
-VALUES (1, 'rule35', '456236234525');
-
-INSERT INTO game_rules (game_id, name, description)
-VALUES (2, 'rule36', 'sjgnos34534534');
-
-INSERT INTO game_items (game_id, name, description)
-VALUES (1, 'magic wand', 'cast so fucking spells');
-
-INSERT INTO game_items (game_id, name, description)
-VALUES (2, 'hand of arm', 'very strong hand');
