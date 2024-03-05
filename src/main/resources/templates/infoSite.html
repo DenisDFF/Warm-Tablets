@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Games Catalog</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6 text-center">
+            <h1>Інформація</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Хто ми?
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            Теплі настілки - це група друзів, яка любить настільно рольові ігри. Ми любимо грати та відігравати своїх персонажів. Ми любимо кидати кубики та описувати атаки! Але головне ми любимо створювати контент для україномовної аудиторії. Ми хочемо робити відео на ютуб, ми хочемо робити ігри, ми хочемо проводити стриму. Нас не так багато і ми дуже зайняті особистим життям, але намагаємося для вас.                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="accordion" id="accordionExample2">
+                <div class="card">
+                    <div class="card-header" id="headingOne2">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                                Чи можна вступити до команди?
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne2" class="collapse" aria-labelledby="headingOne2" data-parent="#accordionExample2">
+                        <div class="card-body">
+                            Звичайно, якщо ви хочете створювати контент та допомагати українській спільноті напишіть нам! <br> denis.petrov56245@gmail.com / alexandr.frankovskyi@gmail.com <br>  Ви можете озвучувати, монтувати чи писати сценарії. Організовувати роботу і допомагати з ідеями. Ми чекаємо вас!                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="accordion" id="accordionExample1">
+                <div class="card">
+                    <div class="card-header" id="headingOne1">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
+                                Що ми робимо?
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne1" class="collapse" aria-labelledby="headingOne1" data-parent="#accordionExample1">
+                        <div class="card-body">
+                            Ми створюємо настільно-рольові ігри. Це можуть бути різні проекти такі як Магічні Лавки Аркандії, а можуть бути склоъадні рольові системи з масою механік. Всі наші ігри можна знайти на вкладці "Ігри". Також ми перекладаємо ігри, перекладаємо звичайно ж українською мовою і робимо все за дозволом. Перекладені ігри також у вкладці "Ігри". Ми знімаємо відео та намагаємося випускати якісний контент. Це можуть бути відео по нрі, а можуть бути саги з різних великих франшиз.                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="footer :: footer"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>

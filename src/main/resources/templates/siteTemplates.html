@@ -41,55 +41,31 @@
     <h1 class="text-center font-weight-bold">ДОВІДНИК</h1>
 </div>
 
-<!--<div class="container mt-5">-->
-<!--    <div class="row">-->
-<!--        <div class="col-md-3 mb-4" th:each="category : ${game.categories}">-->
-<!--            <a th:href="@{'/category/' + ${category}}" class="">-->
-<!--                <div class="category-block">-->
-<!--                    <p class="category-text ml-3" style="line-height: 50px;" th:text="${category}"></p>-->
-<!--                </div>-->
-<!--            </a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--<div class="container mt-5">-->
-<!--    <div class="row">-->
-<!--        <div class="col-md-3 mb-4" th:each="detail : ${gameDetails}">-->
-<!--            <a th:href="@{'/game/' + ${game.name}}" class="">-->
-<!--                <div class="category-block">-->
-<!--                    <p class="category-text ml-3" style="line-height: 50px;" th:text="${detail.name}"></p>-->
-<!--                </div>-->
-<!--            </a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-3 mb-4">
-            <a th:href="@{'/game/' + ${game.name} + '/Правила'}" class="btn">
+            <a th:href="@{'/game/' + ${game.name} + '/Rules'}" class="btn">
                 <div class="category-block">
                     <p class="category-text ml-3" style="line-height: 50px;">Правила</p>
                 </div>
             </a>
         </div>
         <div class="col-md-3 mb-4">
-            <a th:href="@{'/game/' + ${game.name} + '/Предмети'}" class="btn">
+            <a th:href="@{'/game/' + ${game.name} + '/Items'}" class="btn">
                 <div class="category-block">
                     <p class="category-text ml-3" style="line-height: 50px;">Предмети</p>
                 </div>
             </a>
         </div>
         <div class="col-md-3 mb-4">
-            <a th:href="@{'/game/' + ${game.name} + '/Персонажи'}" class="btn">
+            <a th:href="@{'/game/' + ${game.name} + '/Character'}" class="btn">
                 <div class="category-block">
                     <p class="category-text ml-3" style="line-height: 50px;">Персонажи</p>
                 </div>
             </a>
         </div>
         <div class="col-md-3 mb-4">
-            <a th:href="@{'/game/' + ${game.name} + '/Спорядження'}" class="btn">
+            <a th:href="@{'/game/' + ${game.name} + '/Equipment'}" class="btn">
                 <div class="category-block">
                     <p class="category-text ml-3" style="line-height: 50px;">Спорядження</p>
                 </div>

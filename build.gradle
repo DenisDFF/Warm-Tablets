@@ -30,8 +30,7 @@ dependencies {
 	implementation 'org.flywaydb:flyway-core'
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.1'
 //	runtimeOnly 'com.h2database:h2'
-
-//	implementation "org.springframework.boot:spring-boot-starter-security"
+	implementation "org.springframework.boot:spring-boot-starter-security"
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
