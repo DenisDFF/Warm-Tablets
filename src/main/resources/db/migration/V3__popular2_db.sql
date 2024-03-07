@@ -24,3 +24,6 @@ VALUES (1, 'Human', 'U stupid human', 'Weapons');
 
 INSERT INTO game_equipment (game_id, name, description, source)
 VALUES (2, 'Human', 'U stupid human', 'Weapons');
+
+INSERT INTO users (username, password, enabled)
+VALUES ('test', '123', true);

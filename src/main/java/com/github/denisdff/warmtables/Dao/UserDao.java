@@ -21,10 +21,6 @@ public class UserDao {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User findByName(String name) {
-        return userRepository.findByName(name);
-    }
-
     public List<User> findAll() {
         return userRepository.findAll();
     }

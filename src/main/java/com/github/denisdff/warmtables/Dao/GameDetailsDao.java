@@ -23,6 +23,10 @@ public class GameDetailsDao {
         return gameDetailsRepository.findByGameId(gameId);
     }
 
+    public List<GameRules> findByGameIdFiltered(Long gameId, String query) {
+        return gameDetailsRepository.findByGameIdFiltered(gameId, query);
+    }
+
     public GameRules saveItem(GameRules gameRules) {
        return gameDetailsRepository.save(gameRules);
     }

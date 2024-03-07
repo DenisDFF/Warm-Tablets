@@ -18,6 +18,10 @@ public class GameEquipmentDao {
         return gameEquipmentRepository.findByGameId(gameId);
     }
 
+    public List<GameEquipment> findByGameIdFiltered(Long gameId, String query) {
+        return gameEquipmentRepository.findByGameIdFiltered(gameId, query);
+    }
+
     public GameEquipment saveItem(GameEquipment item) {
        return gameEquipmentRepository.save(item);
     }

@@ -40,3 +40,17 @@ CREATE TABLE IF NOT EXISTS game_equipment (
     source TEXT NOT NULL,
     FOREIGN KEY (game_id) REFERENCES games(id)
 );
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    enabled BOOLEAN NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS authorities (
+    username VARCHAR(255) NOT NULL,
+    authority VARCHAR(50) NOT NULL,
+    PRIMARY KEY (username, authority),
+    FOREIGN KEY (username) REFERENCES users(username)
+);

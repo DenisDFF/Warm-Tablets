@@ -2,6 +2,7 @@ package com.github.denisdff.warmtables.Dao;
 
 
 import com.github.denisdff.warmtables.Entity.GameCharacter;
+import com.github.denisdff.warmtables.Entity.GameRules;
 import com.github.denisdff.warmtables.Repository.GameCharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,10 @@ public class GameCharacterDao {
 
     public List<GameCharacter> findByGameId(Long gameId) {
         return gameCharacterRepository.findByGameId(gameId);
+    }
+
+    public List<GameCharacter> findByGameIdFiltered(Long gameId, String query) {
+        return gameCharacterRepository.findByGameIdFiltered(gameId, query);
     }
 
     public GameCharacter saveItem(GameCharacter item) {
