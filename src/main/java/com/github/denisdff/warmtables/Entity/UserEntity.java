@@ -1,13 +1,12 @@
 package com.github.denisdff.warmtables.Entity;
 
-import com.github.denisdff.warmtables.Config.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Table(name = "users")
 @Data
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

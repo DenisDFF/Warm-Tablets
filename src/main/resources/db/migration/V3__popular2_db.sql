@@ -26,4 +26,13 @@ INSERT INTO game_equipment (game_id, name, description, source)
 VALUES (2, 'Human', 'U stupid human', 'Weapons');
 
 INSERT INTO users (username, password, enabled)
-VALUES ('test', '123', true);
+VALUES ('test', '{noop}123', true);
+
+INSERT INTO users (username, password, enabled)
+VALUES ('test1', '{noop}123', true);
+
+INSERT INTO authorities (username, authority)
+VALUES ('test', 'ROLE_USER');
+
+INSERT INTO authorities (username, authority)
+VALUES ('test1', 'ROLE_ADMIN');

@@ -1,15 +1,9 @@
 package com.github.denisdff.warmtables.Controller;
 
-import com.github.denisdff.warmtables.Config.UserRole;
 import com.github.denisdff.warmtables.Repository.GameDetailsRepository;
 import com.github.denisdff.warmtables.Repository.GameRepository;
 import com.github.denisdff.warmtables.Dao.*;
 import com.github.denisdff.warmtables.Entity.*;
-import com.github.denisdff.warmtables.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -46,24 +40,23 @@ public class MainController {
 
     @RequestMapping("/login")
     public String showLoginForm() {
-        return "login";
+        return "authorizationSite";
     }
 
 
-
      @RequestMapping("/create-user")
-     public String test (Model model) {
-        model.addAttribute("user", new User());
+     public String createUser (Model model) {
+        model.addAttribute("user", new UserEntity());
         return "createUser";
      }
 
     @PostMapping("/createUser")
-    public String test2 (@ModelAttribute User user, Model model) {
+    public String createUserSubmit (@ModelAttribute UserEntity user, Model model) {
 //        user.setRole(UserRole.USER);
-        user.setEnabled(false);
-        User addedUser = userDao.save(user);
+        user.setEnabled(true);
+        UserEntity addedUser = userDao.save(user);
         model.addAttribute("addedUser", addedUser);
-        return "redirect:/warm-tables";
+        return "redirect:/";
     }
 
     @RequestMapping("/games-catalog")
@@ -92,7 +85,7 @@ public class MainController {
 
 
 
-    @RequestMapping("/warm-tables")
+    @RequestMapping("/")
     public String homePage() {
         return "mainsite";
     }

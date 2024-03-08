@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 
 <head>
     <meta charset="UTF-8">
@@ -42,9 +44,9 @@
     </div>
 </div>
 
-<div class="container mt-5 mb-5">
-<a th:href="@{'/create/' + ${game.name} + '/Rules'}" class="btn btn-primary" style="background-color: #FF4C00;">Створити новий предмет</a>
-</div>
+    <div class="container mt-5 mb-5" sec:authorize="isAuthenticated()">
+        <a th:href="@{'/create/' + ${game.name} + '/Rules'}" class="btn btn-primary" style="background-color: #FF4C00;">Створити новий предмет</a>
+    </div>
 
 <div th:replace="footer :: footer"></div>
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New User</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<div th:replace="header :: header"></div>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+
+                    <div>
+                        <div th:if="${param.error}">
+                            Invalid username and password.
+                        </div>
+                        <div th:if="${param.logout}">
+                            You have been logged out.
+                        </div>
+                        <h2 class="text-center mb-4">Увійти до облікового запису</h2>
+                        <form th:action="@{/login}" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" placeholder="Ім'я"/>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" name="password" placeholder="Пароль"/>
+                            </div>
+                            <input type="submit" class="btn btn-orange btn-block" style="background-color: #FF4C00;" value="Увійти"/>
+                        </form>
+                        <p class="text-center mt-3">Немає облікового запису?<a href="/create-user">Створити</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="footer :: footer"></div>
+</body>
+</html>
