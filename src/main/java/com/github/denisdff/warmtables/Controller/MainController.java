@@ -4,6 +4,8 @@ import com.github.denisdff.warmtables.Repository.GameDetailsRepository;
 import com.github.denisdff.warmtables.Repository.GameRepository;
 import com.github.denisdff.warmtables.Dao.*;
 import com.github.denisdff.warmtables.Entity.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +45,14 @@ public class MainController {
         return "authorizationSite";
     }
 
+    @GetMapping("/logout")
+    public String logout() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            SecurityContextHolder.getContext().setAuthentication(null);
+        }
+        return "redirect:/login?logout";
+    }
 
      @RequestMapping("/create-user")
      public String createUser (Model model) {
@@ -81,6 +91,11 @@ public class MainController {
     @RequestMapping("/info")
     public String infoPage() {
         return "infoSite";
+    }
+
+    @RequestMapping("/friends")
+    public String friendsPage() {
+        return "frendsSite";
     }
 
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Hello, Bootstrap!</title>
+    <title>хеддер</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
@@ -22,12 +22,29 @@
     <div class="divider"></div>
     <a href="https://www.youtube.com/@tepli-nastolki/videos" target="_blank" class="btn btn-light font-weight-bold">СТРIМИ</a>
     <div class="divider"></div>
-    <button class="btn btn-light font-weight-bold">ДРУЗІ</button>
+    <a href="/friends" class="btn btn-light font-weight-bold">ДРУЗІ</a>
     <div class="divider"></div>
     <a href="/info" class="btn btn-light font-weight-bold">ІНФОРМАЦІЯ</a>
     <div class="divider"></div>
     <a href="https://www.buymeacoffee.com/teplinastolki" class="btn btn-light font-weight-bold">ПІДТРИМКА</a>
-    <a href="/login" class="btn btn-light ml-2 ml-5 font-weight-bold" style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">Вхiд</a>
+<!--    <a href="/login" class="btn btn-light ml-2 ml-5 font-weight-bold" style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">Вхiд</a>-->
+    <a th:if="${#authorization.expression('isAuthenticated()')}"
+       th:text="${#authentication.principal.username}"
+       href="#" class="btn btn-light ml-2 ml-5 font-weight-bold"
+       style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">
+    </a>
+
+    <a th:if="${#authorization.expression('isAuthenticated()')}"
+       href="/logout" class="btn btn-light ml-2 ml-5 font-weight-bold"
+       style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">
+        Вихiд
+    </a>
+
+    <a th:unless="${#authorization.expression('isAuthenticated()')}"
+       href="/login" class="btn btn-light ml-2 ml-5 font-weight-bold"
+       style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">
+        Вхiд
+    </a>
 </header>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

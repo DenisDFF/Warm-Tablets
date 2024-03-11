@@ -16,23 +16,6 @@ import java.util.Map;
 @EnableWebSecurity
 public class SecurityConfiguration{
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests((authz) -> authz
-//                                .requestMatchers("/static/**").permitAll()
-//                                .requestMatchers("/login").permitAll()
-////                        .anyRequest().permitAll()
-//                          .anyRequest().authenticated()
-//                )
-//                .formLogin(Customizer.withDefaults())
-//                .logout(logout -> logout
-//                        .logoutUrl("/logout")
-//                        .logoutSuccessUrl("/login")
-//                );
-//        return http.build();
-//    }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -41,7 +24,10 @@ public class SecurityConfiguration{
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll();
+                .loginPage("/login").permitAll()
+                .and()
+                .logout().logoutUrl("/logout").permitAll();
+
         return http.build();
     }
 
