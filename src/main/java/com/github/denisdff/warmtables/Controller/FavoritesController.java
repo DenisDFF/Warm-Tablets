@@ -1,10 +1,8 @@
 package com.github.denisdff.warmtables.Controller;
 
 import com.github.denisdff.warmtables.Entity.*;
-import com.github.denisdff.warmtables.Repository.FavoritesByUserRepository;
-import com.github.denisdff.warmtables.Repository.GameDetailsRepository;
-import com.github.denisdff.warmtables.Repository.GameItemRepository;
-import com.github.denisdff.warmtables.Repository.UserRepository;
+import com.github.denisdff.warmtables.Repository.*;
+import jakarta.transaction.Transactional;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -23,12 +21,19 @@ public class FavoritesController {
     private FavoritesByUserRepository favoritesByUserRepository;
 
     private GameItemRepository gameItemRepository;
+
+    private GameEquipmentRepository gameEquipmentRepository;
+
+    private GameCharacterRepository gameCharacterRepository;
+
     public FavoritesController(UserRepository userRepository, GameDetailsRepository gameDetailsRepository, FavoritesByUserRepository favoritesByUserRepository,
-                                GameItemRepository gameItemRepository) {
+                                GameItemRepository gameItemRepository, GameEquipmentRepository gameEquipmentRepository, GameCharacterRepository gameCharacterRepository) {
         this.userRepository = userRepository;
         this.gameDetailsRepository = gameDetailsRepository;
         this.favoritesByUserRepository = favoritesByUserRepository;
         this.gameItemRepository = gameItemRepository;
+        this.gameEquipmentRepository = gameEquipmentRepository;
+        this.gameCharacterRepository = gameCharacterRepository;
     }
 
     @RequestMapping("/favorites")
@@ -61,8 +66,53 @@ public class FavoritesController {
         return "favorite";
     }
 
-    @GetMapping("/favoriteCreate")
-    public void favoriteCreate(@ModelAttribute Favorite favorite, @RequestParam Long ruleId, Model model) {
+//    @GetMapping("/favoriteCreate")
+//    public String favoriteCreate(@ModelAttribute Favorite favorite, @RequestParam Long ruleId, Model model) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//
+//        String username = authentication.getName();
+//        UserEntity currentUser = userRepository.findByUsername(username);
+//
+//        GameRules gameRule = gameDetailsRepository.findById(ruleId).orElse(null);
+//
+//        if (gameRule != null) {
+//            favorite.setUser(currentUser);
+//            favorite.setGameRules(gameRule);
+//
+//            favoritesByUserRepository.save(favorite);
+//        }
+//
+//        GameItem gameItem = gameItemRepository.findById(ruleId).orElse(null);
+//
+//        if (gameItem != null) {
+//            favorite.setUser(currentUser);
+//            favorite.setGameItem(gameItem);
+//
+//            favoritesByUserRepository.save(favorite);
+//        }
+//
+//        GameEquipment gameEquipment = gameEquipmentRepository.findById(ruleId).orElse(null);
+//
+//        if (gameItem != null) {
+//            favorite.setUser(currentUser);
+//            favorite.setGameEquipment(gameEquipment);
+//
+//            favoritesByUserRepository.save(favorite);
+//        }
+//
+//        GameCharacter gameCharacter = gameCharacterRepository.findById(ruleId).orElse(null);
+//
+//        if (gameItem != null) {
+//            favorite.setUser(currentUser);
+//            favorite.setGameCharacter(gameCharacter);
+//
+//            favoritesByUserRepository.save(favorite);
+//        }
+//        return "redirect:/favorites";
+//    }
+
+    @GetMapping("/favoriteCreateRule")
+    public String favoriteCreateRule(@ModelAttribute Favorite favorite, @RequestParam Long ruleId, Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         String username = authentication.getName();
@@ -77,6 +127,16 @@ public class FavoritesController {
             favoritesByUserRepository.save(favorite);
         }
 
+        return "redirect:/favorites";
+    }
+
+    @GetMapping("/favoriteCreateItem")
+    public String favoriteCreateItem(@ModelAttribute Favorite favorite, @RequestParam Long ruleId, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+        UserEntity currentUser = userRepository.findByUsername(username);
+
         GameItem gameItem = gameItemRepository.findById(ruleId).orElse(null);
 
         if (gameItem != null) {
@@ -86,5 +146,92 @@ public class FavoritesController {
             favoritesByUserRepository.save(favorite);
         }
 
+        return "redirect:/favorites";
+    }
+
+    @GetMapping("/favoriteCreateEquip")
+    public String favoriteCreateEquip(@ModelAttribute Favorite favorite, @RequestParam Long ruleId, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+        UserEntity currentUser = userRepository.findByUsername(username);
+
+        GameEquipment gameEquipment = gameEquipmentRepository.findById(ruleId).orElse(null);
+
+        if (gameEquipment != null) {
+            favorite.setUser(currentUser);
+            favorite.setGameEquipment(gameEquipment);
+
+            favoritesByUserRepository.save(favorite);
+        }
+
+        return "redirect:/favorites";
+    }
+
+    @GetMapping("/favoriteCreateChar")
+    public String favoriteCreateChar(@ModelAttribute Favorite favorite, @RequestParam Long ruleId, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+        UserEntity currentUser = userRepository.findByUsername(username);
+
+        GameCharacter gameCharacter = gameCharacterRepository.findById(ruleId).orElse(null);
+
+        if (gameCharacter != null) {
+            favorite.setUser(currentUser);
+            favorite.setGameCharacter(gameCharacter);
+
+            favoritesByUserRepository.save(favorite);
+        }
+
+        return "redirect:/favorites";
+    }
+
+    @Transactional
+    @GetMapping("/favoriteDeleteRules")
+    public String favoriteDeleteRule(@RequestParam Long favoriteId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+        UserEntity currentUser = userRepository.findByUsername(username);
+
+        favoritesByUserRepository.deleteByUserAndGameRulesId(currentUser, favoriteId);
+        return "redirect:/favorites";
+    }
+
+    @Transactional
+    @GetMapping("/favoriteDeleteItem")
+    public String favoriteDeleteItem(@RequestParam Long favoriteId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+        UserEntity currentUser = userRepository.findByUsername(username);
+
+        favoritesByUserRepository.deleteByUserAndGameItemId(currentUser, favoriteId);
+        return "redirect:/favorites";
+    }
+
+    @Transactional
+    @GetMapping("/favoriteDeleteEquip")
+    public String favoriteDeleteEquip(@RequestParam Long favoriteId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+        UserEntity currentUser = userRepository.findByUsername(username);
+
+        favoritesByUserRepository.deleteByUserAndGameEquipmentId(currentUser, favoriteId);
+        return "redirect:/favorites";
+    }
+
+    @Transactional
+    @GetMapping("/favoriteDeleteChar")
+    public String favoriteDeleteChar(@RequestParam Long favoriteId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+        UserEntity currentUser = userRepository.findByUsername(username);
+
+        favoritesByUserRepository.deleteByUserAndGameCharacterId(currentUser, favoriteId);
+        return "redirect:/favorites";
     }
 }

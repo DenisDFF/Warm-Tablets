@@ -39,7 +39,7 @@
                     <p th:text="${detail.source}" class="font-weight-bold">Джерело</p>
                     <p th:text="${detail.description}">Опис предмета</p>
                     <div sec:authorize="isAuthenticated()">
-                        <a th:href="@{'/favoriteCreate?ruleId=' + ${detail.id}}" class="btn btn-primary" style="background-color: #FF4C00;">Додати в обране</a>
+                        <a th:href="@{'/favoriteCreateChar?ruleId=' + ${detail.id}}" class="btn btn-primary" style="background-color: #FF4C00;">Додати в обране</a>
                     </div>
                 </div>
             </div>

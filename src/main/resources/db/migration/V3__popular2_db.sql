@@ -36,18 +36,3 @@ VALUES ('test', 'ROLE_USER');
 
 INSERT INTO authorities (username, authority)
 VALUES ('test1', 'ROLE_ADMIN');
-
-INSERT INTO favorites (user_id, rule_id)
-VALUES (1, 2);
-
-INSERT INTO favorites (user_id, rule_id)
-VALUES (1, 1);
-
-INSERT INTO favorites (user_id, item_id)
-VALUES (1, 1);
-
-INSERT INTO favorites (user_id, equipment_id)
-VALUES (1, 1);
-
-INSERT INTO favorites (user_id, character_id)
-VALUES (1, 1);

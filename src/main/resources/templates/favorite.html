@@ -49,54 +49,58 @@
 <div class="container">
     <!-- Game Rules -->
     <div class="card my-3">
-        <div class="card-header">
-            <h1>Ваші збережені Правила</h1>
+        <div class="ml-5">
+            <h1 class="font-title-bold">Ваші збережені Правила</h1>
         </div>
         <ul class="list-group list-group-flush">
             <li th:each="rule : ${gameRules}" class="list-group-item" th:if="${rule != null}">
                 <div th:text="${rule.name}"></div>
                 <div th:text="${rule.description}"></div>
+                <a th:href="@{'/favoriteDeleteRules?favoriteId=' + ${rule.id}}" class="btn btn-danger">Видалити з обраного</a>
             </li>
         </ul>
     </div>
 
     <!-- Game Items -->
     <div class="card my-3">
-        <div class="card-header">
-            <h1>Ваші збережені Предмети</h1>
+        <div class="ml-5">
+            <h1 class="font-title-bold">Ваші збережені Предмети</h1>
         </div>
         <ul class="list-group list-group-flush">
             <li th:each="item : ${gameItem}" class="list-group-item" th:if="${item != null}">
                 <div th:text="${item.name}"></div>
                 <div th:text="${item.description}"></div>
+                <a th:href="@{'/favoriteDeleteItem?favoriteId=' + ${item.id}}" class="btn btn-danger">Видалити з обраного</a>
             </li>
         </ul>
     </div>
 
     <!-- Game Equipment -->
     <div class="card my-3">
-        <div class="card-header">
-            <h1>Ваші збережені Спорядження</h1>
+        <div class="ml-5">
+            <h1 class="font-title-bold">Ваші збережені Спорядження</h1>
         </div>
         <ul class="list-group list-group-flush">
             <li th:each="equip : ${gameEquip}" class="list-group-item" th:if="${equip != null}">
                 <div th:text="${equip.name}"></div>
                 <div th:text="${equip.source}"></div>
                 <div th:text="${equip.description}"></div>
+                <a th:href="@{'/favoriteDeleteEquip?favoriteId=' + ${equip.id}}" class="btn btn-danger">Видалити з обраного</a>
             </li>
         </ul>
     </div>
 
     <!-- Game Characters -->
     <div class="card my-3">
-        <div class="card-header">
-            <h1>Ваші збережені Персонажі</h1>
+        <div class="ml-5">
+            <h1 class="font-title-bold">Ваші збережені Персонажі</h1>
         </div>
         <ul class="list-group list-group-flush">
             <li th:each="char : ${gameChar}" class="list-group-item" th:if="${char != null}">
                 <div th:text="${char.name}"></div>
                 <div th:text="${char.source}"></div>
                 <div th:text="${char.description}"></div>
+                <a th:href="@{'/favoriteDeleteChar?favoriteId=' + ${char.id}}" class="btn btn-danger">Видалити з обраного</a>
             </li>
         </ul>
     </div>

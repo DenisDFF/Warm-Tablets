@@ -11,4 +11,8 @@ import java.util.List;
 @Repository
 public interface FavoritesByUserRepository extends JpaRepository<Favorite, Long> {
     List<Favorite> findByUser(UserEntity userEntity);
+    void deleteByUserAndGameRulesId(UserEntity user, Long gameRulesId);
+    void deleteByUserAndGameItemId(UserEntity user, Long gameItemId);
+    void deleteByUserAndGameCharacterId(UserEntity user, Long gameCharacterId);
+    void deleteByUserAndGameEquipmentId(UserEntity user, Long gameEquipmentId);
 }
