@@ -48,9 +48,24 @@ CREATE TABLE IF NOT EXISTS users (
     enabled BOOLEAN NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS favorites (
+    id SERIAL PRIMARY KEY,
+    user_id BIGINT,
+    rule_id BIGINT,
+    item_id BIGINT,
+    equipment_id BIGINT,
+    character_id BIGINT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (rule_id) REFERENCES game_rules(id),
+    FOREIGN KEY (item_id) REFERENCES game_items(id),
+    FOREIGN KEY (equipment_id) REFERENCES game_equipment(id),
+    FOREIGN KEY (character_id) REFERENCES game_character(id)
+);
+
 CREATE TABLE IF NOT EXISTS authorities (
     username VARCHAR(255) NOT NULL,
     authority VARCHAR(50) NOT NULL,
     PRIMARY KEY (username, authority),
     FOREIGN KEY (username) REFERENCES users(username)
 );
+

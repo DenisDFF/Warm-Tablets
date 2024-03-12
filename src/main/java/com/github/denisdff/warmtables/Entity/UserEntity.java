@@ -3,6 +3,8 @@ package com.github.denisdff.warmtables.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -17,9 +19,6 @@ public class UserEntity {
 
     @Column(nullable = false)
     private String password;
-
-//    @Enumerated(EnumType.STRING)
-//    private UserRole role;
 
     @Column(nullable = false)
     private boolean enabled;

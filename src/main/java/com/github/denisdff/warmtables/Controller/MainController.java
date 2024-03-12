@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -62,7 +63,6 @@ public class MainController {
 
     @PostMapping("/createUser")
     public String createUserSubmit (@ModelAttribute UserEntity user, Model model) {
-//        user.setRole(UserRole.USER);
         user.setEnabled(true);
         UserEntity addedUser = userDao.save(user);
         model.addAttribute("addedUser", addedUser);

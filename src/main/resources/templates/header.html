@@ -27,7 +27,7 @@
     <a href="/info" class="btn btn-light font-weight-bold">ІНФОРМАЦІЯ</a>
     <div class="divider"></div>
     <a href="https://www.buymeacoffee.com/teplinastolki" class="btn btn-light font-weight-bold">ПІДТРИМКА</a>
-<!--    <a href="/login" class="btn btn-light ml-2 ml-5 font-weight-bold" style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">Вхiд</a>-->
+
     <a th:if="${#authorization.expression('isAuthenticated()')}"
        th:text="${#authentication.principal.username}"
        href="#" class="btn btn-light ml-2 ml-5 font-weight-bold"
@@ -38,6 +38,12 @@
        href="/logout" class="btn btn-light ml-2 ml-5 font-weight-bold"
        style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">
         Вихiд
+    </a>
+
+    <a th:if="${#authorization.expression('isAuthenticated()')}"
+       href="/favorites" class="btn btn-light ml-2 ml-5 font-weight-bold"
+       style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">
+        Обране
     </a>
 
     <a th:unless="${#authorization.expression('isAuthenticated()')}"
