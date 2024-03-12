@@ -38,6 +38,9 @@
                      th:aria-labelledby="'item' + (${iterStat.index + 1}) + '-list'">
                     <h4 th:text="${detail.name}">Предмет</h4>
                     <p th:text="${detail.description}">Опис предмета</p>
+                    <div sec:authorize="isAuthenticated()">
+                        <a th:href="@{'/favoriteCreate?ruleId=' + ${detail.id}}" class="btn btn-primary" style="background-color: #FF4C00;">Додати в обране</a>
+                    </div>
                 </div>
             </div>
         </div>

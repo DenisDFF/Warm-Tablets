@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Збережені</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<!--<div class="container">-->
+<!--    <div class="container mt-5 mb-5">-->
+<!--        <h1>Ваші збережені Правила</h1>-->
+<!--        <div th:each="rule : ${gameRules}">-->
+<!--            <div th:if="${rule != null}">-->
+<!--                <div th:text="${rule.name}"></div>-->
+<!--                <div th:text="${rule.description}"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<h1>Ваші збережені Предмети</h1>-->
+<!--<div th:each="item : ${gameItem}">-->
+<!--    <div th:if="${item != null}">-->
+<!--        <div th:text="${item.name}"></div>-->
+<!--        <div th:text="${item.description}"></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<h1>Ваші збережені Спорядження</h1>-->
+<!--<div th:each="equip : ${gameEquip}">-->
+<!--    <div th:if="${equip != null}">-->
+<!--        <div th:text="${equip.name}"></div>-->
+<!--        <div th:text="${equip.source}"></div>-->
+<!--        <div th:text="${equip.description}"></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<h1>Ваші збережені Персонажі</h1>-->
+<!--<div th:each="char : ${gameChar}">-->
+<!--    <div th:if="${char != null}">-->
+<!--        <div th:text="${char.name}"></div>-->
+<!--        <div th:text="${char.source}"></div>-->
+<!--        <div th:text="${char.description}"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div th:replace="header :: header"></div>
+
+<div class="container">
+    <!-- Game Rules -->
+    <div class="card my-3">
+        <div class="card-header">
+            <h1>Ваші збережені Правила</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li th:each="rule : ${gameRules}" class="list-group-item" th:if="${rule != null}">
+                <div th:text="${rule.name}"></div>
+                <div th:text="${rule.description}"></div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Game Items -->
+    <div class="card my-3">
+        <div class="card-header">
+            <h1>Ваші збережені Предмети</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li th:each="item : ${gameItem}" class="list-group-item" th:if="${item != null}">
+                <div th:text="${item.name}"></div>
+                <div th:text="${item.description}"></div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Game Equipment -->
+    <div class="card my-3">
+        <div class="card-header">
+            <h1>Ваші збережені Спорядження</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li th:each="equip : ${gameEquip}" class="list-group-item" th:if="${equip != null}">
+                <div th:text="${equip.name}"></div>
+                <div th:text="${equip.source}"></div>
+                <div th:text="${equip.description}"></div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Game Characters -->
+    <div class="card my-3">
+        <div class="card-header">
+            <h1>Ваші збережені Персонажі</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li th:each="char : ${gameChar}" class="list-group-item" th:if="${char != null}">
+                <div th:text="${char.name}"></div>
+                <div th:text="${char.source}"></div>
+                <div th:text="${char.description}"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div th:replace="footer :: footer"></div>
+
+</body>
+</html>
