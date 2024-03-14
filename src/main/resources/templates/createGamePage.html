@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Створити нову гру</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<div th:replace="header :: header"></div>
+
+<div class="container mt-5 mb-5">
+    <h1>Створити гру</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/createGame}" th:object="${game}" method="post">
+                <div class="form-group">
+                    <label for="name">Ім'я гри</label>
+                    <input type="text" id="name" name="name" th:field="*{name}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="description">Опис гри</label>
+                    <textarea id="description" name="description" th:field="*{description}" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">URL зображення</label>
+                    <input type="text" id="imageUrl" name="imageUrl" th:field="*{imageUrl}" class="form-control" placeholder="/static/images/">
+                </div>
+                <div class="form-group">
+                    <label for="bigImageUrl">Велике URL зображення</label>
+                    <input type="text" id="bigImageUrl" name="bigImageUrl" th:field="*{bigImageUrl}" class="form-control" placeholder="/static/images/">
+                </div>
+                <div class="form-group">
+                    <label for="link">Посилання на гру</label>
+                    <input type="text" id="link" name="link" th:field="*{link}" class="form-control">
+                </div>
+                <input type="submit" value="СТВОРИТИ" class="btn btn-primary" style="background-color: #FF4C00;">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="footer :: footer"></div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

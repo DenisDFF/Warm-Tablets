@@ -24,8 +24,8 @@ public class GameDao {
         return gameRepository.findByName(name);
     }
 
-    public void saveGame(Game game) {
-        gameRepository.save(game);
+    public Game saveGame(Game game) {
+       return gameRepository.save(game);
     }
 
     public void deleteGame(Long id) {

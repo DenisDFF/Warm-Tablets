@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -28,6 +29,10 @@
         </a>
         <p class="custom-text font-weight-bold" th:text="${game.name}"></p>
     </div>
+</div>
+
+<div class="container mt-5 mb-5" sec:authorize="hasRole('ROLE_ADMIN')">
+    <a href="/createNewGame" class="btn btn-primary" style="background-color: #FF4C00;">Створити нову гру</a>
 </div>
 
 <div th:replace="footer :: footer"></div>

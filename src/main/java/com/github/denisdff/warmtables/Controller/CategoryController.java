@@ -39,6 +39,19 @@ public class CategoryController {
         this.userDao = userDao;
     }
 
+    @GetMapping("/createNewGame")
+    public String createNewGame (Model model) {
+        model.addAttribute("game", new Game());
+        return "createGamePage";
+    }
+
+    @PostMapping("/createGame")
+    public String createNewGameSubmit (Model model, @ModelAttribute Game game) {
+        Game addedGame = gameDao.saveGame(game);
+        model.addAttribute("addedGame", addedGame);
+        return "redirect:/games-catalog";
+    }
+
     @RequestMapping("/game/{name}/Rules")
     public String gameDetailsRules(@PathVariable("name") String name, Model model, @RequestParam(name = "query", required = false) String query) {
         String gameName = name.replace("/Rules", "");

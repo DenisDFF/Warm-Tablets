@@ -98,7 +98,10 @@ public class MainController {
         return "frendsSite";
     }
 
-
+    @RequestMapping("/infoGame")
+    public String infoGamePage() {
+        return "infoGame";
+    }
 
     @RequestMapping("/")
     public String homePage() {
