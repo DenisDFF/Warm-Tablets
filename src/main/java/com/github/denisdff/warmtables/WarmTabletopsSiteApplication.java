@@ -14,4 +14,3 @@ public class WarmTabletopsSiteApplication {
 		SpringApplication.run(WarmTabletopsSiteApplication.class, args);
 	}
 }
-
