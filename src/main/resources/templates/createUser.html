@@ -7,10 +7,38 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+
+    <link rel="icon" type="image/x-icon" href="/static/images/Chanel%20Logo.png">
+
+    <style>
+        /* Стили для скрытия/показа заголовков в зависимости от ширины экрана */
+
+        /* Скрытие заголовка на мобильных устройствах (ширина до 768px) */
+        @media (max-width: 768px) {
+            .header-desktop {
+                display: none;
+            }
+        }
+
+        /* Скрытие заголовка на ПК (ширина от 769px и выше) */
+        @media (min-width: 769px) {
+            .header-mobile {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div th:replace="header :: header"></div>
+<div class="header-desktop">
+    <header th:replace="header :: header">
+    </header>
+</div>
+
+<div class="header-mobile">
+    <header th:replace="headerMobil :: header">
+    </header>
+</div>
 
 <div class="container mt-5 mb-5">
     <h2>Створити нового користувача</h2>
@@ -24,10 +52,12 @@
             <label for="password">Пароль:</label>
             <input type="password" class="form-control" id="password" name="password" th:field="*{password}">
         </div>
-        <button type="submit" class="btn btn-primary" style="background-color: #FF4C00;">Створити користувача</button>
+        <button type="submit" class="btn btn-primary orange-button">Створити користувача</button>
     </form>
 </div>
 
 <div th:replace="footer :: footer"></div>
+
+<script src="static/js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+/* Добавляем стили для мобильных устройств */
+@media only screen and (max-width: 767px) {
+    .container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .container mt-5 {
+        margin-top: 20px;
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+
+    .font-title-bold {
+        font-size: 28px;
+    }
+
+    .custom-text {
+        font-size: 18px;
+    }
+
+    .btn {
+        width: 100%;
+        height: auto;
+        font-size: 16px;
+        line-height: 24px;
+        margin-top: 20px;
+    }
+
+    .category-block {
+        height: auto;
+    }
+
+    .category-text {
+        font-size: 18px;
+    }
+
+    .list-group-item {
+        font-size: 16px;
+    }
+}
+
+/* Добавляем стили для планшетов */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .font-title-bold {
+        font-size: 32px;
+    }
+
+    .custom-text {
+        font-size: 20px;
+    }
+
+    .btn {
+        font-size: 18px;
+        line-height: 36px;
+    }
+
+    .category-text {
+        font-size: 22px;
+    }
+
+    .list-group-item {
+        font-size: 18px;
+    }
+}

@@ -9,11 +9,40 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+
+    <link rel="icon" type="image/x-icon" href="/static/images/Chanel%20Logo.png">
+
+    <style>
+        /* Стили для скрытия/показа заголовков в зависимости от ширины экрана */
+
+        /* Скрытие заголовка на мобильных устройствах (ширина до 768px) */
+        @media (max-width: 768px) {
+            .header-desktop {
+                display: none;
+            }
+        }
+
+        /* Скрытие заголовка на ПК (ширина от 769px и выше) */
+        @media (min-width: 769px) {
+            .header-mobile {
+                display: none;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
 
-<div th:replace="header :: header"></div>
+<div class="header-desktop">
+    <header th:replace="header :: header">
+    </header>
+</div>
+
+<div class="header-mobile">
+    <header th:replace="headerMobil :: header">
+    </header>
+</div>
 
 <div th:replace="search :: search"></div>
 
@@ -39,7 +68,7 @@
                     <p th:text="${detail.source}" class="font-weight-bold">Джерело</p>
                     <p th:text="${detail.description}">Опис предмета</p>
                     <div sec:authorize="isAuthenticated()">
-                        <a th:href="@{'/favoriteCreateChar?ruleId=' + ${detail.id}}" class="btn btn-primary" style="background-color: #FF4C00;">Додати в обране</a>
+                        <a th:href="@{'/favoriteCreateChar?ruleId=' + ${detail.id}}" class="btn btn-primary orange-button">Додати в обране</a>
                     </div>
                 </div>
             </div>
@@ -48,14 +77,21 @@
 </div>
 
 <div class="container mt-5 mb-5" sec:authorize="hasRole('ROLE_ADMIN')">
-    <a th:href="@{'/create/' + ${game.name} + '/Character'}" class="btn btn-primary" style="background-color: #FF4C00;">Створити новий предмет</a>
+    <a th:href="@{'/create/' + ${game.name} + '/Character'}" class="btn btn-primary orange-button">Створити новий предмет</a>
 </div>
 
 <div th:replace="footer :: footer"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function toggleSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    if (sidebar.style.right === "-250px") {
+        sidebar.style.right = "0";
+    } else {
+        sidebar.style.right = "-250px";
+    }
+}
+</script>
 
 </body>
 

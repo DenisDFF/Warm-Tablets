@@ -93,32 +93,104 @@ color: #000;
     border: 1px solid #000;
     color: #000;
     transition: background-color 0.3s, color 0.3s;
-    border-radius: 10px; /* Закругленные углы */
+    border-radius: 10px;
 }
 
 .list-group-item:hover {
-    background-color: #FF4C00;
+    background-color: #db9f86;
     color: #FFF;
 }
 
 .list-group-item.active {
-    background-color: #FF4C00 !important;
+    background-color: #db9f86 !important;
     color: #FFF;
-    border: 1px solid #FF4C00 !important;
+    border: 1px solid #db9f86 !important;
 }
 
 .card {
-    border-radius: 15px; /* Округленные углы */
+    border-radius: 15px;
     border: 1px solid #000;
 }
 
 .card-header {
-    background-color: #FF4C00;
+    background-color: #db9f86;
     color: #FFF;
-    border-radius: 15px 15px 0 0; /* Округляем верхние углы */
+    border-radius: 15px 15px 0 0;
 }
 
 .card-body {
     background-color: #FFF;
     color: #000;
+}
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: -250px;
+            background-color: #fff;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #000;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+
+        @media (max-width: 768px) {
+            .logo {
+                margin-right: 0 !important;
+            }
+            .divider {
+                display: block;
+            }
+            .sidebar {
+                right: 0;
+            }
+            .d-md-none {
+                display: block !important;
+            }
+            .d-md-block {
+                display: none !important;
+            }
+        }
+
+.orange-button {
+    background-color: #ff834f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: color 0.3s ease;
+}
+
+.orange-button:hover {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    footer {
+        display: none;
+    }
 }

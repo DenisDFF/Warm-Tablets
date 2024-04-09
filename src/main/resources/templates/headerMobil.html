@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>хеддер</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <style>
+        /* Sidebar menu */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: -250px; /* Start with sidebar hidden on wider screens */
+            background-color: #fff;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #000;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .logo {
+                margin-right: 0 !important; /* Adjust logo margin */
+            }
+            .divider {
+                display: block; /* Show divider on mobile devices */
+            }
+            .sidebar {
+                right: 0; /* Show sidebar on mobile devices */
+            }
+            .d-md-none {
+                display: block !important; /* Show hamburger button on mobile devices */
+            }
+            .d-md-block {
+                display: none !important; /* Hide hamburger button on wider screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="container-fluid">
+    <a href="/" class="logo btn btn-link p-0 mr-3">
+        <img src="/static/images/Chanel%20Logo.png" alt="Логотип" class="logo">
+    </a>
+
+    <span class="btn btn-light d-block d-md-none" onclick="toggleSidebar()">
+        &#9776; <!-- Hamburger icon -->
+    </span>
+
+    <span class="btn btn-light d-none d-md-block" onclick="toggleSidebar()">
+        &#9776;
+    </span>
+
+    <div id="sidebar" class="sidebar">
+        <a href="/games-catalog" class="btn btn-light font-weight-bold">IГРИ</a>
+        <a href="https://www.youtube.com/@tepli-nastolki/videos" target="_blank" class="btn btn-light font-weight-bold">ВІДЕО</a>
+        <a href="https://www.youtube.com/@tepli-nastolki/videos" target="_blank" class="btn btn-light font-weight-bold">СТРIМИ</a>
+        <a href="/friends" class="btn btn-light font-weight-bold">ДРУЗІ</a>
+        <a href="/info" class="btn btn-light font-weight-bold">ІНФОРМАЦІЯ</a>
+        <a href="https://www.buymeacoffee.com/teplinastolki" class="btn btn-light font-weight-bold">ПІДТРИМКА</a>
+    </div>
+
+    <!-- Auth Links -->
+    <a th:if="${#authorization.expression('isAuthenticated()')}"
+       th:text="${#authentication.principal.username}"
+       href="#" class="btn btn-light ml-2 ml-md-5 font-weight-bold"
+       style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">
+    </a>
+
+    <a th:if="${#authorization.expression('isAuthenticated()')}"
+       href="/logout" class="btn btn-light ml-2 ml-md-5 font-weight-bold"
+       style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">
+        Вихiд
+    </a>
+
+    <a th:if="${#authorization.expression('isAuthenticated()')}"
+       href="/favorites" class="btn btn-light ml-2 ml-md-5 font-weight-bold"
+       style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">
+        Обране
+    </a>
+
+    <a th:unless="${#authorization.expression('isAuthenticated()')}"
+       href="/login" class="btn btn-light ml-2 ml-md-5 font-weight-bold"
+       style="width: 89px; height: 67px; border: 1px solid #fff; text-align: center; line-height: 48px;">
+        Вхiд
+    </a>
+</header>
+
+<script>
+    function toggleSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    if (sidebar.style.right === "-250px") {
+        sidebar.style.right = "0";
+    } else {
+        sidebar.style.right = "-250px";
+    }
+}
+</script>
+
+</body>
+
+</html>

@@ -7,10 +7,38 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+
+    <link rel="icon" type="image/x-icon" href="/static/images/Chanel%20Logo.png">
+
+    <style>
+        /* Стили для скрытия/показа заголовков в зависимости от ширины экрана */
+
+        /* Скрытие заголовка на мобильных устройствах (ширина до 768px) */
+        @media (max-width: 768px) {
+            .header-desktop {
+                display: none;
+            }
+        }
+
+        /* Скрытие заголовка на ПК (ширина от 769px и выше) */
+        @media (min-width: 769px) {
+            .header-mobile {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div th:replace="header :: header"></div>
+<div class="header-desktop">
+    <header th:replace="header :: header">
+    </header>
+</div>
+
+<div class="header-mobile">
+    <header th:replace="headerMobil :: header">
+    </header>
+</div>
 
 <div class="container mt-5 mb-5">
     <h1>Create Game Rules</h1>
@@ -26,7 +54,7 @@
                     <label for="description">Description:</label>
                     <textarea id="description" name="description" th:field="*{description}" class="form-control"></textarea>
                 </div>
-                <input type="submit" value="СТВОРИТИ" class="btn btn-primary" style="background-color: #FF4C00;">
+                <input type="submit" value="СТВОРИТИ" class="btn btn-primary orange-button">
             </form>
         </div>
     </div>
@@ -35,8 +63,16 @@
 <div th:replace="footer :: footer"></div>
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function toggleSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    if (sidebar.style.right === "-250px") {
+        sidebar.style.right = "0";
+    } else {
+        sidebar.style.right = "-250px";
+    }
+}
+</script>
+
 </body>
 </html>
