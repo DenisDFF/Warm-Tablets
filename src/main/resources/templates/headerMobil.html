@@ -77,17 +77,23 @@
         &#9776; <!-- Hamburger icon -->
     </span>
 
-    <span class="btn btn-light d-none d-md-block" onclick="toggleSidebar()">
+    <span class="btn btn-light d-none d-md-block" onclick="toggleSidebar()" style="color: black;">
         &#9776;
     </span>
 
     <div id="sidebar" class="sidebar">
+        <span class="btn btn-light d-block d-md-none" onclick="toggleSidebar()" style="color: black;">
+         &#9776;
+        </span>
         <a href="/games-catalog" class="btn btn-light font-weight-bold">IГРИ</a>
         <a href="https://www.youtube.com/@tepli-nastolki/videos" target="_blank" class="btn btn-light font-weight-bold">ВІДЕО</a>
         <a href="https://www.youtube.com/@tepli-nastolki/videos" target="_blank" class="btn btn-light font-weight-bold">СТРIМИ</a>
         <a href="/friends" class="btn btn-light font-weight-bold">ДРУЗІ</a>
         <a href="/info" class="btn btn-light font-weight-bold">ІНФОРМАЦІЯ</a>
         <a href="https://www.buymeacoffee.com/teplinastolki" class="btn btn-light font-weight-bold">ПІДТРИМКА</a>
+        <span class="btn btn-light d-block d-md-none" onclick="toggleSidebar()" style="color: black;">
+         &#9776;
+        </span>
     </div>
 
     <!-- Auth Links -->
@@ -118,13 +124,13 @@
 
 <script>
     function toggleSidebar() {
-    var sidebar = document.getElementById("sidebar");
-    if (sidebar.style.right === "-250px") {
-        sidebar.style.right = "0";
-    } else {
-        sidebar.style.right = "-250px";
+        var sidebar = document.getElementById("sidebar");
+        if (sidebar.style.display === "block") {
+            sidebar.style.display = "none";
+        } else {
+            sidebar.style.display = "block";
+        }
     }
-}
 </script>
 
 </body>

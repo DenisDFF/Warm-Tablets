@@ -26,7 +26,10 @@ public class SecurityConfiguration{
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
-                .logout().logoutUrl("/logout").permitAll();
+                .logout().logoutUrl("/logout").permitAll()
+                .and()
+                .rememberMe()
+                .tokenValiditySeconds(604800);
 
         return http.build();
     }

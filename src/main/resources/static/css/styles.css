@@ -129,7 +129,7 @@ color: #000;
             position: fixed;
             z-index: 1000;
             top: 0;
-            right: -250px;
+            right: -300px;
             background-color: #fff;
             overflow-x: hidden;
             transition: 0.3s;

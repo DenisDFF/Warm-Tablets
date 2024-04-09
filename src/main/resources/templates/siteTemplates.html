@@ -12,20 +12,28 @@
     <link rel="icon" type="image/x-icon" href="/static/images/Chanel%20Logo.png">
 
     <style>
-        /* Стили для скрытия/показа заголовков в зависимости от ширины экрана */
-
-        /* Скрытие заголовка на мобильных устройствах (ширина до 768px) */
         @media (max-width: 768px) {
             .header-desktop {
                 display: none;
             }
-        }
 
-        /* Скрытие заголовка на ПК (ширина от 769px и выше) */
+            .custom-text {
+            font-size: 16px;
+            }
+
+            .btn-primary.orange-button {
+            width: 150px;
+        }
+            }
+
         @media (min-width: 769px) {
             .header-mobile {
                 display: none;
             }
+
+            .btn-primary.orange-button {
+            width: 300px;
+        }
         }
     </style>
 </head>
@@ -48,7 +56,7 @@
     <div class="d-flex align-items-center">
         <p class="custom-text ml-5" style="width: 850px;" th:text="${game.description}"></p>
         <div class="ml-auto">
-            <a th:href="@{${game.link}}" class="btn btn-primary font-title-bold mr-5 orange-button" style=" width: 300px; height: 100px; line-height: 72px;">ГРАТИ</a>
+            <a th:href="@{${game.link}}" class="btn btn-primary font-title-bold mr-5 orange-button" style=" height: 100px; line-height: 72px;">ГРАТИ</a>
         </div>
     </div>
 </div>
