@@ -195,3 +195,11 @@ color: #000;
         display: none;
     }
 }
+
+.btn-primary:hover{
+    padding: 15px 20px;
+    background-color: #ff830f;
+    line-height: 1.5;
+    width: 200px;
+    height: 60px;
+}

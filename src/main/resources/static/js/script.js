@@ -7,4 +7,3 @@
             sidebar.style.display = "block";
         }
     }
-
