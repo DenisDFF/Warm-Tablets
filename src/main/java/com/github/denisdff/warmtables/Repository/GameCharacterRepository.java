@@ -11,6 +11,6 @@ import java.util.List;
 public interface GameCharacterRepository extends JpaRepository<GameCharacter, Long> {
     List<GameCharacter> findByGameId(Long gameId);
 
-    @Query("SELECT r FROM GameCharacter r WHERE r.gameId = :gameId AND r.name LIKE %:query%")
+    @Query("SELECT r FROM GameCharacter r WHERE r.gameId = :gameId AND LOWER(r.name) LIKE LOWER(CONCAT('%', :query, '%'))")
     List<GameCharacter> findByGameIdFiltered(Long gameId, @Param("query") String query);
 }

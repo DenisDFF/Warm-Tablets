@@ -11,6 +11,6 @@ import java.util.List;
 public interface GameEquipmentRepository extends JpaRepository<GameEquipment, Long> {
     List<GameEquipment> findByGameId(Long gameId);
 
-    @Query("SELECT r FROM GameEquipment r WHERE r.gameId = :gameId AND r.name LIKE %:query%")
+    @Query("SELECT r FROM GameEquipment r WHERE r.gameId = :gameId AND LOWER(r.name) LIKE LOWER(CONCAT('%', :query, '%'))")
     List<GameEquipment> findByGameIdFiltered(Long gameId, @Param("query") String query);
 }

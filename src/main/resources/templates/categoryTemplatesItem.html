@@ -49,24 +49,45 @@
     <div class="row">
         <div class="col-md-6">
             <div class="list-group" id="list-tab" role="tablist">
-                <a th:each="detail, iterStat : ${gameDetails}" class="list-group-item list-group-item-action"
+                <!-- Генерация элементов списка предметов -->
+                <a th:each="detail, iterStat : ${gameDetails}"
+                   class="list-group-item list-group-item-action"
                    th:id="'item' + (${iterStat.index + 1}) + '-list'"
-                   th:data-toggle="list"
-                   th:href="'#item' + (${iterStat.index + 1})"
+                   th:data-toggle="modal"
+                   th:data-target="'#item' + (${iterStat.index + 1})"
                    role="tab"
                    th:text="${detail.name}">Предмет</a>
             </div>
         </div>
         <div class="col-md-6">
             <div class="tab-content" id="nav-tabContent">
-                <div th:each="detail, iterStat : ${gameDetails}" class="tab-pane fade"
+                <!-- Генерация модальных окон для каждого предмета -->
+                <div th:each="detail, iterStat : ${gameDetails}"
+                     class="modal fade"
                      th:id="'item' + (${iterStat.index + 1})"
-                     role="tabpanel"
-                     th:aria-labelledby="'item' + (${iterStat.index + 1}) + '-list'">
-                    <h4 th:text="${detail.name}">Предмет</h4>
-                    <p th:text="${detail.description}">Опис предмета</p>
-                    <div sec:authorize="isAuthenticated()">
-                        <a th:href="@{'/favoriteCreateItem?ruleId=' + ${detail.id}}" class="btn btn-primary orange-button">Додати в обране</a>
+                     role="dialog"
+                     aria-labelledby="'item' + (${iterStat.index + 1}) + '-title'"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-right" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" th:id="'item' + (${iterStat.index + 1}) + '-title'"
+                                    th:text="${detail.name}">Предмет</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p th:text="${detail.description}">Описание предмета</p>
+                            </div>
+                            <div class="modal-footer">
+                                <!-- Кнопка добавления предмета в избранное (если пользователь аутентифицирован) -->
+                                <div sec:authorize="isAuthenticated()">
+                                    <a th:href="@{'/favoriteCreateItem?itemId=' + ${detail.id}}"
+                                       class="btn btn-primary orange-button">Додати в обране</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,16 +101,14 @@
 
 <div th:replace="footer :: footer"></div>
 
-<script>
-    function toggleSidebar() {
-    var sidebar = document.getElementById("sidebar");
-    if (sidebar.style.right === "-250px") {
-        sidebar.style.right = "0";
-    } else {
-        sidebar.style.right = "-250px";
-    }
-}
-</script>
+<script>function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        if (sidebar.style.display === "block") {
+            sidebar.style.display = "none";
+        } else {
+            sidebar.style.display = "block";
+        }
+    }</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
