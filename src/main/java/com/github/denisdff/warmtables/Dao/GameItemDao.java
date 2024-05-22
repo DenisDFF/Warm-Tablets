@@ -4,6 +4,7 @@ import com.github.denisdff.warmtables.Entity.GameItem;
 import com.github.denisdff.warmtables.Entity.GameRules;
 import com.github.denisdff.warmtables.Repository.GameItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class GameItemDao {
         this.gameItemRepository = gameItemRepository;
     }
 
+    @Cacheable(value = "item", key = "'gameId'")
     public List<GameItem> findByGameId(Long gameId) {
         return gameItemRepository.findByGameId(gameId);
     }

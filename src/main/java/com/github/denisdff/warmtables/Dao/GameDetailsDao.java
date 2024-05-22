@@ -6,6 +6,7 @@ import com.github.denisdff.warmtables.Repository.GameDetailsRepository;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class GameDetailsDao {
         this.gameDetailsRepository = gameDetailsRepository;
     }
 
+    @Cacheable(value = "rules", key = "'gameId'")
     public List<GameRules> findByGameId(Long gameId) {
         return gameDetailsRepository.findByGameId(gameId);
     }

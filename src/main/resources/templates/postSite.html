@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пости</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <link rel="icon" type="image/x-icon" href="/static/images/Chanel%20Logo.png">
+
+    <style>
+        /* Стили для скрытия/показа заголовков в зависимости от ширины экрана */
+
+        /* Скрытие заголовка на мобильных устройствах (ширина до 768px) */
+        @media (max-width: 768px) {
+            .header-desktop {
+                display: none;
+            }
+        }
+
+        /* Скрытие заголовка на ПК (ширина от 769px и выше) */
+        @media (min-width: 769px) {
+            .header-mobile {
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="header-desktop">
+    <header th:replace="header :: header">
+    </header>
+</div>
+
+<div class="header-mobile">
+    <header th:replace="headerMobil :: header">
+    </header>
+</div>
+
+<div class="text-center mt-5">
+    <h1 class="custom-text font-weight-bold">Пости</h1>
+    <div class="mx-auto" style="max-width: 900px;">
+        <p class="lead custom-text">Дорогі відвідувачі сайту тут можуть залишати будь-які пости. Ця сторінка майже не контролюється, тому тут може відбуватися все що завгодно. Користувачі можуть влаштувати повну анархію або поводитися культурно. Тут можна писати статті, набори гравців, пошуки майстра або просто меми по нрі.</p>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div th:each="post : ${posts}" class="mb-3">
+        <div class="">
+            <h5 th:text="${post.name}" class="font-title-bold"></h5>
+            <p th:text="'Author: ' + ${userMap[post.userId].username}"></p>
+            <div class="card-body" th:if="${post.base64 != null}">
+                <img th:src="'data:image/jpeg;base64,' + ${post.base64}"
+                     style="max-width: 200px; max-height: 200px;">
+            </div>
+            <p th:text="${post.description}" class="custom-text"></p>
+        </div>
+    </div>
+</div>
+
+<div th:replace="footer :: footer"></div>
+
+<script src="static/js/script.js"></script>
+</body>
+</html>

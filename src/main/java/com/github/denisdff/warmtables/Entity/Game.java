@@ -5,13 +5,16 @@ import lombok.Data;
 
 
 import javax.swing.plaf.basic.BasicIconFactory;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 @Entity
 @Table(name = "games")
 @Data
-public class Game {
+public class Game implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

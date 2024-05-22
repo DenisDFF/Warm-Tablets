@@ -3,6 +3,7 @@ package com.github.denisdff.warmtables.Dao;
 import com.github.denisdff.warmtables.Entity.Game;
 import com.github.denisdff.warmtables.Repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class GameDao {
         this.gameRepository = gameRepository;
     }
 
+    @Cacheable(value = "game", key = "'findAll'")
     public List<Game> getAllGames() {
         return gameRepository.findAll();
     }

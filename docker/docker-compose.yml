@@ -27,3 +27,9 @@ services:
     restart: always
     ports:
       - 9090:8080
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - 6379:6379
