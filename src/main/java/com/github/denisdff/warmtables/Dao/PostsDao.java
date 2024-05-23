@@ -19,9 +19,13 @@ public class PostsDao {
         this.postsRepository = postsRepository;
     }
 
-    @Cacheable(value = "game", key = "'allPost'")
     public List<Post> getAllPosts() {
         return postsRepository.findAll();
+    }
+
+    @Cacheable(value = "game", key = "allPost")
+    public List<Post> findAllByOrderByCreatedDateDesc() {
+        return postsRepository.findAllByOrderByCreatedDateDesc();
     }
 
     public Post findByName(String name) {

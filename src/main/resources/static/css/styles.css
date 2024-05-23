@@ -221,3 +221,14 @@ color: #000;
                 right: 20px;
                 cursor: pointer;
             }
+
+.post-container {
+    border-bottom: 1px solid #ccc; /* Цвет и толщина рамки */
+    padding-bottom: 10px; /* Отступ снизу, чтобы рамка не касалась текста */
+}
+
+.post-date {
+        float: right; /* Смещаем дату вправо */
+        color: #999; /* Цвет текста */
+        font-size: 0.9em; /* Размер шрифта */
+    }

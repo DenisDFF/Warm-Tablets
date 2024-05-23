@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "posts")
@@ -22,4 +23,7 @@ public class Post implements Serializable {
     private String description;
 
     private String base64;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate = new Date();
 }
