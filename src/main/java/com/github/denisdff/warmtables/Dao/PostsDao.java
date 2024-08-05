@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PostsDao {
@@ -38,5 +39,9 @@ public class PostsDao {
 
     public void deletePost(Long id) {
         postsRepository.deleteById(id);
+    }
+
+    public Optional<Post> findById(Long id) {
+        return postsRepository.findById(id);
     }
 }

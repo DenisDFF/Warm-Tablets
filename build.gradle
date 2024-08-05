@@ -29,6 +29,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.flywaydb:flyway-core'
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.1'
+	implementation 'org.kefirsf:kefirbb:1.5'
 //	runtimeOnly 'com.h2database:h2'
 	implementation "org.springframework.boot:spring-boot-starter-security"
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'

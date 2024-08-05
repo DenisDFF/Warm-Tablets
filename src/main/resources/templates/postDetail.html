@@ -41,50 +41,17 @@
     </header>
 </div>
 
-<div class="text-center mt-5">
-    <h1 class="custom-text font-weight-bold">Пости</h1>
-    <div class="mx-auto" style="max-width: 900px;">
-        <p class="lead custom-text">Дорогі відвідувачі сайту тут можуть залишати будь-які пости. Ця сторінка майже не контролюється, тому тут може відбуватися все що завгодно. Користувачі можуть влаштувати повну анархію або поводитися культурно. Тут можна писати статті, набори гравців, пошуки майстра або просто меми по нрі.</p>
-        <p class="lead custom-text">(Зареєструйтесь та увійдіть до облікового запису щоб писати нові пости)</p>
-    </div>
-</div>
-
-
-<div th:if="${#authorization.expression('isAuthenticated()')}">
-    <div class="container mt-5">
-        <form th:action="@{/post-create}" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="name">Назва поста:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="description">Опис:</label>
-                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="image">Зображення:</label>
-                <input type="file" class="form-control-file" id="image" name="image">
-            </div>
-            <button type="submit" class="btn  orange-button">Додати пост</button>
-        </form>
-    </div>
-</div>
-
 <div class="container mt-5">
-    <div th:each="post : ${posts}" class="mb-3 post-container row">
-        <div class="col-md-12">
-            <h5 th:text="${post.name}" class="font-title-bold" style="max-width: 100%; word-wrap: break-word;"></h5>
-            <p>
-                <span th:text="'Автор: ' + ${userMap[post.userId].username}"></span>
-                <span class="post-date" th:text="'Дата створення: ' + ${#dates.format(post.createdDate, 'dd.MM.yyyy HH:mm')}"></span>
-            </p>
-            <div class="card-body" th:if="${post.base64 != null}">
-                <img th:src="'data:image/jpeg;base64,' + ${post.base64}" style="max-width: 1280px; max-height: 720px;">
-            </div>
-            <p class="custom-text post-description" th:utext="${post.description}" style="max-width: 100%; word-wrap: break-word; white-space: pre-wrap;"></p>
-            <button class="btn btn-toggle-description orange-button">Показати більше</button>
-            <a th:href="@{/posts/{id}(id=${post.id})}" class="btn btn-link" style="color: #333;">Посилання</a>
+    <div class="col-md-12">
+        <h5 th:text="${post.name}" class="font-title-bold" style="max-width: 100%; word-wrap: break-word;"></h5>
+        <p>
+            <span th:text="'Автор: ' + ${user.username}"></span>
+            <span class="post-date" th:text="'Дата створення: ' + ${#dates.format(post.createdDate, 'dd.MM.yyyy HH:mm')}"></span>
+        </p>
+        <div class="card-body" th:if="${post.base64 != null}">
+            <img th:src="'data:image/jpeg;base64,' + ${post.base64}" style="max-width: 1280px; max-height: 720px;">
         </div>
+        <p class="custom-text post-description" th:utext="${post.description}" style="max-width: 100%; word-wrap: break-word; white-space: pre-wrap;"></p>
     </div>
 </div>
 
