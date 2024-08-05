@@ -57,38 +57,38 @@
 
         <div class="col-md-6">
             <div class="tab-content" id="nav-tabContent">
-            <div th:each="detail, iterStat : ${gameDetails}" class="modal fade"
-                 th:id="'item' + (${iterStat.index + 1})"
-                 tabindex="-1"
-                 role="dialog"
-                 aria-labelledby="'item' + (${iterStat.index + 1}) + '-title'"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-right" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" th:id="'item' + (${iterStat.index + 1}) + '-title'"
-                                th:text="${detail.name}">Предмет</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p th:text="${detail.description}">Описание предмета</p>
-                        </div>
-                        <div class="modal-footer">
-                            <div sec:authorize="isAuthenticated()">
-                                <a th:href="@{'/favoriteCreateRule?ruleId=' + ${detail.id}}" class="btn btn-primary"
-                                   style="background-color: #FF4C00;">Додати в обране</a>
+                <div th:each="detail, iterStat : ${gameDetails}" class="modal fade"
+                     th:id="'item' + (${iterStat.index + 1})"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="'item' + (${iterStat.index + 1}) + '-title'"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" th:id="'item' + (${iterStat.index + 1}) + '-title'"
+                                    th:text="${detail.name}">Предмет</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p th:text="${detail.description}">Описание предмета</p>
+                            </div>
+                            <div class="modal-footer">
+                                <div sec:authorize="isAuthenticated()">
+                                    <a th:href="@{'/favoriteCreateRule?ruleId=' + ${detail.id}}" class="btn btn-primary"
+                                       style="background-color: #FF4C00;">Додати в обране</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-</div>
+
 
 <div class="container mt-5 mb-5" sec:authorize="hasRole('ROLE_ADMIN')">
     <a th:href="@{'/create/' + ${game.name} + '/Rules'}" class="btn btn-primary orange-button">Створити новий предмет</a>

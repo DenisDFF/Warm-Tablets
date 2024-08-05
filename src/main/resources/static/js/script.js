@@ -12,17 +12,28 @@
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
 
-    // Если на мобильном устройстве, добавляем обработчик клика для перехода на новую страницу
     if (isMobileDevice()) {
         const listItems = document.querySelectorAll('.list-group-item');
 
         listItems.forEach(item => {
             item.addEventListener('click', function() {
                 const itemId = item.getAttribute('href');
-                window.location.href = itemId; // Переход на новую страницу
+                window.location.href = itemId;
             });
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     document.addEventListener('DOMContentLoaded', function () {
             const descriptions = document.querySelectorAll('.post-description');
@@ -47,11 +58,11 @@
                         const isTruncated = text.endsWith('...');
                         if (isTruncated) {
                             description.textContent = fullText;
-                            toggle.textContent = 'Скрыть';
+                            toggle.textContent = 'Приховати';
                         } else {
                             const truncatedText = text.slice(0, 300) + '...';
                             description.textContent = truncatedText;
-                            toggle.textContent = 'Показать больше';
+                            toggle.textContent = 'Показати більше';
                         }
                     }
                 });

@@ -70,9 +70,43 @@
     </div>
 </div>
 
+<!--<div class="container mt-5">-->
+<!--    <div th:each="post : ${posts}" class="mb-3 post-container row">-->
+<!--        <div class="col-md-12">-->
+<!--            <h5 th:text="${post.name}" class="font-title-bold" style="max-width: 100%; word-wrap: break-word;"></h5>-->
+<!--            <p>-->
+<!--                <span th:text="'Автор: ' + ${userMap[post.userId].username}"></span>-->
+<!--                <span class="post-date" th:text="'Дата створення: ' + ${#dates.format(post.createdDate, 'dd.MM.yyyy HH:mm')}"></span>-->
+<!--            </p>-->
+<!--            <div class="card-body" th:if="${post.base64 != null}">-->
+<!--                <img th:src="'data:image/jpeg;base64,' + ${post.base64}" style="max-width: 1280px; max-height: 720px;">-->
+<!--            </div>-->
+<!--            <p class="custom-text post-description" th:text="${post.description}" style="max-width: 100%; word-wrap: break-word;"></p>-->
+<!--            <button class="btn btn-toggle-description orange-button">Показати більше</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="container mt-5">-->
+<!--    <div th:each="post : ${posts}" class="mb-3 post-container row">-->
+<!--        <div class="col-md-12">-->
+<!--            <h5 th:text="${post.name}" class="font-title-bold" style="max-width: 100%; word-wrap: break-word;"></h5>-->
+<!--            <p>-->
+<!--                <span th:text="'Автор: ' + ${userMap[post.userId].username}"></span>-->
+<!--                <span class="post-date" th:text="'Дата створення: ' + ${#dates.format(post.createdDate, 'dd.MM.yyyy HH:mm')}"></span>-->
+<!--            </p>-->
+<!--            <div class="card-body" th:if="${post.base64 != null}">-->
+<!--                <img th:src="'data:image/jpeg;base64,' + ${post.base64}" style="max-width: 1280px; max-height: 720px;">-->
+<!--            </div>-->
+<!--            <p class="custom-text post-description" th:utext="${post.description}" style="max-width: 100%; word-wrap: break-word;"></p>-->
+<!--            <button class="btn btn-toggle-description orange-button">Показати більше</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 <div class="container mt-5">
-    <div th:each="post : ${posts}" class="mb-3 post-container">
-        <div class="col-md-6">
+    <div th:each="post : ${posts}" class="mb-3 post-container row">
+        <div class="col-md-12">
             <h5 th:text="${post.name}" class="font-title-bold" style="max-width: 100%; word-wrap: break-word;"></h5>
             <p>
                 <span th:text="'Автор: ' + ${userMap[post.userId].username}"></span>
@@ -81,14 +115,45 @@
             <div class="card-body" th:if="${post.base64 != null}">
                 <img th:src="'data:image/jpeg;base64,' + ${post.base64}" style="max-width: 1280px; max-height: 720px;">
             </div>
-            <p class="custom-text post-description" th:text="${post.description}" style="max-width: 100%; word-wrap: break-word;"></p>
-            <button class="btn  btn-toggle-description orange-button">Показати більше</button>
+            <p class="custom-text post-description" th:utext="${post.description}" style="max-width: 100%; word-wrap: break-word; white-space: pre-wrap;"></p>
+            <button class="btn btn-toggle-description orange-button">Показати більше</button>
         </div>
     </div>
 </div>
 
 <div th:replace="footer :: footer"></div>
 
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButtons = document.querySelectorAll(".btn-toggle-description");
+
+            toggleButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const postDescription = this.previousElementSibling;
+                    if (postDescription.classList.contains("expanded")) {
+                        postDescription.classList.remove("expanded");
+                        this.textContent = "Показати більше";
+                    } else {
+                        postDescription.classList.add("expanded");
+                        this.textContent = "Сховати";
+                    }
+                    // Обрабатываем ссылки после изменения состояния
+                    makeLinksClickable(postDescription);
+                });
+            });
+
+            // Function to make URLs in text clickable
+            function makeLinksClickable(description) {
+                let text = description.innerHTML;
+                const urlPattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+                text = text.replace(urlPattern, '<a href="$1" target="_blank">$1</a>');
+                description.innerHTML = text;
+            }
+
+            // Initial link processing for all descriptions
+            document.querySelectorAll(".post-description").forEach(description => makeLinksClickable(description));
+        });
+    </script>
 
 <script src="static/js/script.js"></script>
 </body>
