@@ -18,6 +18,10 @@
             .header-desktop {
                 display: none;
             }
+            .responsive-img {
+                max-width: 100%;
+                height: auto;
+            }
         }
 
         /* Скрытие заголовка на ПК (ширина от 769px и выше) */
@@ -49,7 +53,7 @@
             <span class="post-date" th:text="'Дата створення: ' + ${#dates.format(post.createdDate, 'dd.MM.yyyy HH:mm')}"></span>
         </p>
         <div class="card-body" th:if="${post.base64 != null}">
-            <img th:src="'data:image/jpeg;base64,' + ${post.base64}" style="max-width: 1280px; max-height: 720px;">
+            <img th:src="'data:image/jpeg;base64,' + ${post.base64}" class="responsive-img">
         </div>
         <p class="custom-text post-description" th:utext="${post.description}" style="max-width: 100%; word-wrap: break-word; white-space: pre-wrap;"></p>
     </div>
